@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../css/PatientDashboard.css";
 
-function PatientDashboard() {
+function PatientDashboard({ onLogout, onNavigateProfile }) {
     const savedUser = JSON.parse(localStorage.getItem("user"));
     const patientName = savedUser?.name || "Juan Dela Cruz";
     const patientId = savedUser?.id || "8821";
@@ -24,7 +24,7 @@ function PatientDashboard() {
                         <span className="material-symbols-outlined">notifications</span>
                         <span className="notification-dot"></span>
                     </button>
-                    <div className="user-profile-header">
+                    <div className="user-profile-header" onClick={onNavigateProfile} style={{ cursor: 'pointer' }}>
                         <div>
                             <p className="profile-name">{patientName}</p>
                             <p className="profile-role">{savedUser?.role || ""}</p>
@@ -59,10 +59,10 @@ function PatientDashboard() {
                         <span className="material-symbols-outlined">payments</span>
                         <span>Billing</span>
                     </a>
-                    <a href="/settings" className="patient-nav-button">
-                        <span className="material-symbols-outlined">settings</span>
-                        <span>Settings</span>
-                    </a>
+                    <button className="patient-nav-button" onClick={onNavigateProfile} style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%' }}>
+    <span className="material-symbols-outlined">settings</span>
+    <span>Settings</span>
+</button>
                 </nav>
 
                 <div className="sidebar-footer">

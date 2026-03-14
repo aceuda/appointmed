@@ -28,6 +28,8 @@ export const userAPI = {
     // auth endpoints
     register: (data) => api.post('/users/register', data),
     login: (creds) => api.post('/users/login', creds),
+
+    update: (id, userData) => api.put(`/users/${id}`, userData),
 };
 
 export default api;
