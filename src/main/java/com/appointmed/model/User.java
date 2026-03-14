@@ -23,7 +23,13 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    // user role: PATIENT or DOCTOR
     @Column(nullable = false)
     private String role;
+
+    @Column(nullable = true)
+    private String avatarUrl;
+
+    public String getName() {
+        return this.name;
+    }
 }
