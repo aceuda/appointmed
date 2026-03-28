@@ -29,6 +29,10 @@ public class User {
     @Column(nullable = true)
     private String avatarUrl;
 
+    @Lob
+    @Column(columnDefinition = "TEXT", nullable = true)
+    private String avatarData;
+
     public String getName() {
         return this.name;
     }
