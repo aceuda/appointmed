@@ -19,9 +19,9 @@
 
 ![Profile](screenshots/Profile.png)
 
-![Edit Profile](screenshots/Edit Profile.png)
+![Edit Profile](screenshots/Edit-Profile.png)
 
-![Edit Password](screenshots/Edit password.png)
+![Edit Password](screenshots/Edit-Password.png)
 
-![Save Profile](screenshots/Save Profile.png)
+![Save Profile](screenshots/Save-Profile.png)
 
