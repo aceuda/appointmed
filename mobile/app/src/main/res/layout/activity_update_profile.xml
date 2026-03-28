@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textUpdateProfileTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Profile"
+            android:textSize="28sp"
+            android:textColor="@color/textPrimary"
+            android:textStyle="bold"
+            android:paddingTop="24dp"
+            android:paddingBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card">
+
+            <TextView
+                android:id="@+id/textUpdateError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/error"
+                android:visibility="gone"
+                android:paddingTop="8dp" />
+
+            <EditText
+                android:id="@+id/inputUpdateName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Full Name"
+                android:inputType="textPersonName"
+                android:backgroundTint="@color/primaryVariant" />
+
+            <EditText
+                android:id="@+id/inputUpdateEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:backgroundTint="@color/primaryVariant" />
+
+            <EditText
+                android:id="@+id/inputUpdateAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Avatar URL"
+                android:inputType="textUri"
+                android:backgroundTint="@color/primaryVariant" />
+
+            <Button
+                android:id="@+id/buttonSaveProfile"
+                style="@style/PrimaryButton"
+                android:layout_marginTop="18dp"
+                android:text="Save Changes" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>
