@@ -1,7 +1,8 @@
 import React, { useMemo, useState, useEffect } from "react";
-import "../css/DoctorDashboard.css";
+import "./DoctorDashboard.css";
 
 function DoctorDashboard(props) {
+    const nav = (view) => { if (props.onNavigate) props.onNavigate(view); };
     const savedUser = JSON.parse(localStorage.getItem("user"));
 
     // Guard: if not logged in or not doctor, go back to login
@@ -122,26 +123,26 @@ function DoctorDashboard(props) {
             <div className="dashboard-layout">
                 <aside className="doctor-sidebar">
                     <nav className="doctor-nav">
-                        <a href="/dashboard" className="nav-link active">
+                        <button className="nav-link active" onClick={() => nav('DASHBOARD')}>
                             <span className="material-symbols-outlined">dashboard</span>
                             <span>Dashboard</span>
-                        </a>
-                        <a href="/patients" className="nav-link">
+                        </button>
+                        <button className="nav-link" onClick={() => nav('DASHBOARD')}>
                             <span className="material-symbols-outlined">groups</span>
                             <span>Patients</span>
-                        </a>
-                        <a href="/schedule" className="nav-link">
+                        </button>
+                        <button className="nav-link" onClick={() => nav('DASHBOARD')}>
                             <span className="material-symbols-outlined">calendar_today</span>
                             <span>Schedule</span>
-                        </a>
-                        <a href="/messages" className="nav-link">
+                        </button>
+                        <button className="nav-link">
                             <span className="material-symbols-outlined">mail</span>
                             <span>Messages</span>
-                        </a>
-                        <a href="/settings" className="nav-link">
+                        </button>
+                        <button className="nav-link" onClick={() => nav('PROFILE')}>
                             <span className="material-symbols-outlined">settings</span>
                             <span>Settings</span>
-                        </a>
+                        </button>
                     </nav>
                     <div className="sidebar-footer">
                         <button className="logout-btn" onClick={handleLogout}>

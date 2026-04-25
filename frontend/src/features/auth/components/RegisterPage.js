@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { userAPI } from "../services/api";
-import "../css/RegisterPage.css";
+import { userAPI } from "../../../shared/services/api";
+import "./RegisterPage.css";
 
 function RegisterPage({ onSwitch }) {
     const [role, setRole] = useState("PATIENT");

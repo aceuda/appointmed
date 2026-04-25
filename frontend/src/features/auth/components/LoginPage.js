@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { userAPI } from "../services/api";
-import "../css/LoginPage.css";
+import { userAPI } from "../../../shared/services/api";
+import "./LoginPage.css";
 
 function LoginPage({ onLogin, onSwitch }) {
     // Restricted roles to exclude Admin

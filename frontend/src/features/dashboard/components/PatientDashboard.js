@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
-import "../css/PatientDashboard.css";
+import "./PatientDashboard.css";
 
-function PatientDashboard({ onLogout, onNavigateProfile }) {
+function PatientDashboard({ onLogout, onNavigateProfile, onNavigate }) {
     const savedUser = JSON.parse(localStorage.getItem("user"));
     const patientName = savedUser?.name || "Juan Dela Cruz";
-    const patientId = savedUser?.id || "8821";
-    // searchTerm no longer needed
 
-    // Redirect if not logged in
     useEffect(() => {
         if (!savedUser) window.location.href = "/";
     }, [savedUser]);
+
+    const nav = (view) => { if (onNavigate) onNavigate(view); };
 
     return (
         <div className="patient-dashboard">
@@ -35,60 +34,56 @@ function PatientDashboard({ onLogout, onNavigateProfile }) {
                     </div>
                 </div>
             </header>
-            {/* Sidebar Navigation */}
-            <aside className="patient-sidebar">
 
+            <aside className="patient-sidebar">
                 <nav className="patient-nav">
-                    <a href="/dashboard" className="patient-nav-button">
+                    <button className="patient-nav-button active" onClick={() => nav('DASHBOARD')}>
                         <span className="material-symbols-outlined">dashboard</span>
                         <span>Dashboard</span>
-                    </a>
-                    <a href="/appointments" className="patient-nav-button">
+                    </button>
+                    <button className="patient-nav-button" onClick={() => nav('SPECIALISTS')}>
                         <span className="material-symbols-outlined">calendar_today</span>
                         <span>Appointments</span>
-                    </a>
-                    <a href="/doctors" className="patient-nav-button">
+                    </button>
+                    <button className="patient-nav-button" onClick={() => nav('SPECIALISTS')}>
                         <span className="material-symbols-outlined">medical_services</span>
                         <span>Doctors</span>
-                    </a>
-                    <a href="/messages" className="patient-nav-button">
+                    </button>
+                    <button className="patient-nav-button">
                         <span className="material-symbols-outlined">chat_bubble</span>
                         <span>Messages</span>
-                    </a>
-                    <a href="/billing" className="patient-nav-button">
+                    </button>
+                    <button className="patient-nav-button">
                         <span className="material-symbols-outlined">payments</span>
                         <span>Billing</span>
-                    </a>
-                    <button className="patient-nav-button" onClick={onNavigateProfile} style={{ background: 'none', border: 'none', cursor: 'pointer', width: '100%' }}>
-    <span className="material-symbols-outlined">settings</span>
-    <span>Settings</span>
-</button>
+                    </button>
+                    <button className="patient-nav-button" onClick={() => nav('PROFILE')}>
+                        <span className="material-symbols-outlined">settings</span>
+                        <span>Settings</span>
+                    </button>
                 </nav>
 
                 <div className="sidebar-footer">
-                    <button className="logout-btn" onClick={() => { localStorage.clear(); window.location.href = "/"; }}>
+                    <button className="logout-btn" onClick={() => { localStorage.clear(); if(onLogout) onLogout(); }}>
                         <span className="material-symbols-outlined">logout</span>
                         <span>Logout</span>
                     </button>
                 </div>
             </aside>
 
-            {/* Main Content Area */}
             <main className="patient-main">
-                {/* Page intro text/actions above the upcoming card */}
                 <div className="page-intro">
                     <div className="header-text">
                         <h1>Welcome back to your health summary.</h1>
                     </div>
                     <div className="header-actions">
-                        <button className="btn-primary">
+                        <button className="btn-primary" onClick={() => nav('SPECIALISTS')}>
                             <span className="material-symbols-outlined">add_circle</span>
                             Quick Book
                         </button>
                     </div>
                 </div>
 
-                {/* Upcoming Appointment Card */}
                 <section className="upcoming-card">
                     <div className="upcoming-date-section">
                         <p className="label-tiny">Upcoming</p>
@@ -113,7 +108,7 @@ function PatientDashboard({ onLogout, onNavigateProfile }) {
                             </div>
                         </div>
                         <div className="card-actions">
-                            <button className="btn-outline">Reschedule</button>
+                            <button className="btn-outline" onClick={() => nav('SPECIALISTS')}>Reschedule</button>
                             <button className="btn-dark">View Details</button>
                         </div>
                     </div>
@@ -127,9 +122,7 @@ function PatientDashboard({ onLogout, onNavigateProfile }) {
                     </div>
                 </div>
 
-                {/* Speciality Grid */}
                 <div className="specialist-grid">
-                    {/* Repeat this card structure for doctors */}
                     <div className="doctor-card">
                         <div className="card-top">
                             <div className="avatar-placeholder"><span className="material-symbols-outlined">person</span></div>
@@ -138,15 +131,13 @@ function PatientDashboard({ onLogout, onNavigateProfile }) {
                         <h4>Dr. Elena Reyes</h4>
                         <p className="specialty-text">Pediatrics</p>
                         <div className="card-details">
-                            <p><span className="material-symbols-outlined">location_on</span> St. Luke's Medical Center</p>
+                            <p><span className="material-symbols-outlined">location_on</span>St. Luke's Medical Center</p>
                             <p><span className="material-symbols-outlined">payments</span> ₱1,800.00 / session</p>
                         </div>
-                        <button className="btn-ghost">Book Now</button>
+                        <button className="btn-ghost" onClick={() => nav('SPECIALISTS')}>Book Now</button>
                     </div>
-                    {/* Add more doctor-cards here */}
                 </div>
 
-                {/* Bottom Stats Section */}
                 <div className="stats-row">
                     <div className="stat-card">
                         <div className="stat-icon blue"><span className="material-symbols-outlined">description</span></div>
