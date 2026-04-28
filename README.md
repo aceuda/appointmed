@@ -19,9 +19,10 @@
 
 ![Profile](screenshots/Profile.png)
 
-![Edit Profile](screenshots/Edit-Profile.png)
+![Edit Profile](screenshots/Edit Profile.png)
 
-![Edit Password](screenshots/Edit-Password.png)
+![Edit Password](screenshots/Edit password.png)
 
-![Save Profile](screenshots/Save-Profile.png)
+![Save Profile](screenshots/Save Profile.png)
 
+"# final-appointmed" 
